@@ -2,8 +2,6 @@ import React from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { userActions } from "../actions";
-import Welcome from './Welcome';
-import Navigation from './Navigation';
 
 class Dashboard extends React.Component {
 

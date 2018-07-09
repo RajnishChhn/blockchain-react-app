@@ -16,7 +16,7 @@ const UserEmulate = (props) => {
                 <nav className="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style={{ zIndex: 3, width: 300 + 'px', fontWeight: 'bold' }} id="mySidebar"><br />
                     {/* <a href="javascript:void(0)" className="w3-button w3-hide-large w3-display-topleft" style={{ width: 100 + '%', fontSize: 22 + 'px' }}>Close Menu</a> */}
                     <div className="w3-container" style={{ textAlign: 'left' }}>
-                        <img src={personImage} style={{ maxHeight: 170 + 'px' }} />
+                        <img alt="Not found" src={personImage} style={{ maxHeight: 170 + 'px' }} />
                         <h3><b>{props.currentUser.split('#')[1]}</b></h3>
                         <hr />
                     </div>

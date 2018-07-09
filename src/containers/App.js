@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Router, Route, Redirect } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import Dashboard from '../components/Dashboard';
@@ -12,8 +12,6 @@ import TemperatureTransaction from '../components/TemperatureTransaction';
 import GPSTransaction from '../components/GPSTransaction';
 import CustomerShipment from '../components/CustomerShipment';
 import CarrierShipment from '../components/CarrierShipment';
-import Login from '../components/Login';
-import CardAuthentication from '../components/CardAuthentication';
 import UserEmulate from "../components/UserEmulate";
 import LoginModal from "../components/LoginModal";
 import { userActions } from "../actions";
@@ -40,7 +38,6 @@ class App extends Component {
   ShowNotification(event) {
     var namespace = "org.acme.shipping.perishable.";
     var eventData = JSON.parse(event);
-    var message = "";
 
     switch (eventData["$class"]) {
       case namespace + "TemperatureThresholdEvent":
@@ -59,6 +56,8 @@ class App extends Component {
       case namespace + "ShipmentInPortEvent":
         toastr.success(`Shipment : ${eventData.shipment.split('#')[1]}`, `Shipment Location updated`);
         break;
+        default:
+        break
     }
 
   }
@@ -93,12 +92,12 @@ class App extends Component {
             <Route exact path="/card-auth" component={() => cardUploaded ? <UserEmulate setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} setUserLogInDetails={this.props.setUserLogInDetails} userLoggedIn={this.props.user.userLoggedIn} />
               : <LoginModal {...this.props} showCard={true} history={history} />} />
             {(!userLoggedIn || !cardUploaded) &&
-              <img src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
+              <img alt="Not found" src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
             }
             <div className="w3-container" id="contact" style={{ marginTop: 75 + 'px', marginLeft: 380 + 'px' }}>
               {/*<Route exact path="/card-auth" component={() => <CardAuthentication {...this.props} history={history}/>} />*/}
               {/* <Redirect from="/" to={isCustomer ? 'create-shipment':'accept-shipment' } /> */}
-              <img src={coyoteLogo} style={{ height: 'auto', width: 160 + 'px', float: 'right', marginTop: -78 + 'px' }} />
+              <img alt="Not found" src={coyoteLogo} style={{ height: 'auto', width: 160 + 'px', float: 'right', marginTop: -78 + 'px' }} />
               <Route exact path="/" component={() => <LoginModal history={history} />} />
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/create-shipment' component={() => <CustomerShipment {...this.props} />} />

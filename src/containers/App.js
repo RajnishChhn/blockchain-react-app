@@ -67,15 +67,21 @@ class App extends Component {
   componentDidMount() {
     this.props.getCardDetailsPing();
     this.props.getAllShipments();
+    if (sessionStorage.userLoggedIn) {
+      // document.body.style.maxWidth='1400px';
+    }
   }
   render() {
     // const isCustomer = this.props.user.user.includes('Customer');  
-    let userLoggedIn = this.props.user.userLoggedIn;
-    let cardUploaded = this.props.user.user;
+    let userLoggedIn = sessionStorage.userLoggedIn;
+    let cardUploaded = true//this.props.user.user;
     return (
       <div>
+        {/* {(!userLoggedIn || !cardUploaded) &&
+          <img src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
+        } */}
         <ReduxToastr
-          timeOut={5000}
+          timeOut={10000}
           newestOnTop={false}
           preventDuplicates
           position="top-right"
@@ -83,31 +89,41 @@ class App extends Component {
           transitionOut="fadeOut"
           progressBar />
         <Router history={history}>
-          <div>
-            {/* {userLoggedIn && !cardUploaded &&
-            <LoginModal {...this.props} showCard={true} history={history}/>  
-          } */}
-            {this.props.user.userLoggedIn && cardUploaded &&
-              <UserEmulate setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} />
-            }
-            <Route exact path="/card-auth" component={() => cardUploaded ? <UserEmulate setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} setUserLogInDetails={this.props.setUserLogInDetails} userLoggedIn={this.props.user.userLoggedIn} />
-              : <LoginModal {...this.props} showCard={true} history={history} />} />
+          <div class="w3-row-padding">
             {(!userLoggedIn || !cardUploaded) &&
               <img src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
             }
-            <div className="w3-container" id="contact" style={{ marginTop: 75 + 'px', marginLeft: 380 + 'px' }}>
-              {/*<Route exact path="/card-auth" component={() => <CardAuthentication {...this.props} history={history}/>} />*/}
-              {/* <Redirect from="/" to={isCustomer ? 'create-shipment':'accept-shipment' } /> */}
-              <img src={coyoteLogo} style={{ height: 'auto', width: 160 + 'px', float: 'right', marginTop: -78 + 'px' }} />
-              <Route exact path="/" component={() => <LoginModal history={history} />} />
-              <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/create-shipment' component={() => <CustomerShipment {...this.props} />} />
-              <Route exact path='/accept-shipment' component={() => <CarrierShipment {...this.props} />} />
-              <Route exact path='/customer-transaction' component={() => <CustomerTransaction {...this.props} />} />
-              <Route exact path='/temperature-transaction' component={() => <TemperatureTransaction {...this.props} />} />
-              <Route exact path='/gps-transaction' component={() => <GPSTransaction {...this.props} />} />
-              <Route exact path='/customer-reporting' component={() => <CustomerReporting {...this.props} />} />
-              <Route exact path='/carrier-reporting' component={() => <CarrierReporting {...this.props} />} />
+            <div class="w3-third">
+              {userLoggedIn && cardUploaded &&
+                <UserEmulate setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} />
+              }
+            </div>
+
+            <div className={userLoggedIn && cardUploaded ? "w3-twothird w3-card w3-white right-div" : ''} id="contact">
+              <div className="w3-container w3-margin-bottom">
+                <Route exact path="/card-auth" component={() => cardUploaded ? <Dashboard />
+                  : <LoginModal {...this.props} showCard={true} history={history} />} />
+                {userLoggedIn && cardUploaded &&
+                  <div className="w3-container w3-margin">
+                    <img src={coyoteLogo} style={{ height: 'auto', width: 160 + 'px', float: 'right' }} />
+                  </div>
+
+                }
+
+                <Route exact path="/" component={() =>
+                  userLoggedIn && cardUploaded ?
+                    <Dashboard />
+                    :
+                    <LoginModal history={history} />} />
+                <Route exact path='/dashboard' component={Dashboard} />
+                <Route exact path='/create-shipment' component={() => <CustomerShipment {...this.props} />} />
+                <Route exact path='/accept-shipment' component={() => <CarrierShipment {...this.props} />} />
+                <Route exact path='/customer-transaction' component={() => <CustomerTransaction {...this.props} />} />
+                <Route exact path='/temperature-transaction' component={() => <TemperatureTransaction {...this.props} />} />
+                <Route exact path='/gps-transaction' component={() => <GPSTransaction {...this.props} />} />
+                <Route exact path='/customer-reporting' component={() => <CustomerReporting {...this.props} />} />
+                <Route exact path='/carrier-reporting' component={() => <CarrierReporting {...this.props} />} />
+              </div>
             </div>
           </div>
         </Router>

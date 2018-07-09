@@ -18,7 +18,9 @@ class Dashboard extends React.Component {
       }   
     return (
       <div>
-          hello          
+          {/* <h1>Hello! Welcome to coyote BlockChain Network</h1> */}
+          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-th fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Hello! Welcome to coyote BlockChain Network</h2>
+          
       </div>  
     )
   }

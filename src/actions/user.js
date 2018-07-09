@@ -151,12 +151,12 @@ export const submitGPS = (formData) => {
     }
 }
 
-export const setUserLogInDetails = () => {
-    return {
-        type: "USER_LOGGEDIN",
-        payload: true
-    }
-}
+// export const setUserLogInDetails = () => {
+//     return {
+//         type: "USER_LOGGEDIN",
+//         payload: true
+//     }
+// }
 
 const setTemperatureQueryResult = (result) => {
     return {

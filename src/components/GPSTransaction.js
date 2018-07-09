@@ -24,10 +24,12 @@ class GPSTransaction extends React.Component {
     render() {
         return (
             <div>
-                <div className="row">
+                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-map-marker fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>GPS Reading</h2>
+                
+                <div className="w3-container">
     
                     <div className="col-6">
-                        <h4> GPS Readings</h4>
+                        {/* <h4> GPS Readings</h4> */}
                         <form>
                             <div className="form-group">
                                 <label htmlFor="shipment">Shipment</label>
@@ -75,7 +77,7 @@ class GPSTransaction extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary" onClick={event => this.handleSubmit(event)}>Submit GPS Location</button>
+                            <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Submit GPS Location</button>
                         </form>
                     </div>
                 </div>

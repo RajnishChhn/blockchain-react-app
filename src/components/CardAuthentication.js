@@ -44,7 +44,7 @@ class CardAuthentication extends React.Component {
                                 <div className="input-group">
                                     <input type="text" className="form-control inputFileVisible" placeholder="Upload Card" onChange={(event) => this.handleChange(event)} />
                                     <span className="input-group-btn">
-                                        <button type="button" className="btn btn-fab btn-round btn-primary">
+                                        <button type="button" className="btn btn-fab btn-round w3-teal">
                                             <i className="material-icons">publish</i>
                                         </button>
                                     </span>
@@ -55,7 +55,7 @@ class CardAuthentication extends React.Component {
                                 <input id="cardName" type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter card Name" onChange={(event) => this.handleChange(event)} />
                             </div>
                             <div className="form-group">
-                                <button className="btn btn-primary" onClick={(event) => this.handleSubmit(event)}>Submit Card</button>
+                                <button className="btn w3-teal" onClick={(event) => this.handleSubmit(event)}>Submit Card</button>
                             </div>
                         </form>
                     </div>

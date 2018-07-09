@@ -22,7 +22,7 @@ class CarrierShipment extends React.Component {
         }
         return (
             <div>
-                <div className="row">
+                <div className="w3-container jumbotron">
                     <div className="col-5">
                         <h4>Accept Shipment</h4>
                         <form>
@@ -30,16 +30,16 @@ class CarrierShipment extends React.Component {
                                 <label htmlFor="shipment">Shipment Name</label>
                                 <input type="text" className="form-control" id="shipment" ref={this.shipmentId} />
                             </div>
-                            <button type="submit" className="btn btn-primary" onClick={event => this.acceptShipment(event)}>Accept</button>
+                            <button type="submit" className="btn w3-teal" onClick={event => this.acceptShipment(event)}>Accept</button>
                         </form>
                     </div>
                 </div>
                 <hr />
-                <div className="row">
-                    <div className="col">
+                <div className="w3-container">
+                    <div>
                         <h4>Shipments</h4>
                         <table className="table table-hover">
-                            <thead>
+                            <thead className="w3-teal">
                                 <tr>
                                     <th scope="col">Shipment Id</th>
                                     <th scope="col">Commodity</th>

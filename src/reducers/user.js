@@ -1,6 +1,6 @@
 const initialState = {
   user: "",
-  userLoggedIn: false,
+  // userLoggedIn: false,
   // cardUploaded:false
 }
 export default function (state = initialState, action) {
@@ -16,10 +16,10 @@ export default function (state = initialState, action) {
         shipments: action.payload
       });
 
-    case "USER_LOGGEDIN":
-      return Object.assign({}, state, {
-        userLoggedIn: action.payload
-      });
+    // case "USER_LOGGEDIN":
+    //   return Object.assign({}, state, {
+    //     userLoggedIn: action.payload
+    //   });
     case "TEMPERATURE_QUERY_FETCHED":
       return Object.assign({}, state, {
         temperatureQueryResult: action.payload

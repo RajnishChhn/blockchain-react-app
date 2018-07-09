@@ -33,67 +33,68 @@ class CustomerShipment extends React.Component {
         // }
         return (
             <div>
-                <div className="row">
-                    <div className="col-6 jumbotron">
-                        <h4>Create Shipment</h4>
-                        <form>
-                            <div className="form-group">
-                                <label htmlFor="shipmentId">Shipment</label>
-                                <input type="text" className="form-control" id="shipmentId" onChange={event => this.handleChange(event)} />
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="unitCount">Units</label>
-                                        <input type="text" className="form-control" id="unitCount" onChange={event => this.handleChange(event)} />
-                                    </div>
+                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-truck fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Shipment Management</h2>
+                {/* <div className="row"> */}
+                <div className="w3-container jumbotron">
+                    <h4>Create Shipment</h4>
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="shipmentId">Shipment</label>
+                            <input type="text" className="form-control" id="shipmentId" onChange={event => this.handleChange(event)} />
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="unitCount">Units</label>
+                                    <input type="text" className="form-control" id="unitCount" onChange={event => this.handleChange(event)} />
                                 </div>
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="type">Commodity</label>
-                                        <select className="form-control" id="type" onChange={this.handleChange}>
-                                            <option defaultValue>Select Commodity...</option>
-                                            <option value="APPLES">APPLES</option>
-                                            <option value="BANANAS">BANANAS</option>
-                                            <option value="PEACHES">PEACHES</option>
-                                        </select>
+                            </div>
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="type">Commodity</label>
+                                    <select className="form-control" id="type" onChange={this.handleChange}>
+                                        <option defaultValue>Select Commodity...</option>
+                                        <option value="APPLES">APPLES</option>
+                                        <option value="BANANAS">BANANAS</option>
+                                        <option value="PEACHES">PEACHES</option>
+                                    </select>
 
-                                        {/* <input type="text" className="form-control" id="type" onChange={event => this.handleChange(event)} /> */}
-                                    </div>
+                                    {/* <input type="text" className="form-control" id="type" onChange={event => this.handleChange(event)} /> */}
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="status" >Status</label>
-                                        <select className="form-control" id="status" onChange={this.handleChange}>
-                                            <option defaultValue>Select status...</option>
-                                            <option value="CREATED">CREATED</option>
-                                            <option value="IN_TRANSIT">IN TRANSIT</option>
-                                            <option value="ARRIVED">ARRIVED</option>
-                                        </select>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="status" >Status</label>
+                                    <select className="form-control" id="status" onChange={this.handleChange}>
+                                        <option defaultValue>Select status...</option>
+                                        <option value="CREATED">CREATED</option>
+                                        <option value="IN_TRANSIT">IN TRANSIT</option>
+                                        <option value="ARRIVED">ARRIVED</option>
+                                    </select>
 
-                                        {/* <input type="text" className="form-control" id="status" onChange={event => this.handleChange(event)} /> */}
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="contract" >Contract</label>
-                                        <input type="text" className="form-control" id="contract" onChange={event => this.handleChange(event)} />
-                                    </div>
+                                    {/* <input type="text" className="form-control" id="status" onChange={event => this.handleChange(event)} /> */}
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
-                        </form>
-                    </div>
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="contract" >Contract</label>
+                                    <input type="text" className="form-control" id="contract" onChange={event => this.handleChange(event)} />
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
+                    </form>
+                    <hr />
                 </div>
-                <hr />
+                {/* </div> */}
 
-                <div className="row">
-                    <div className="col">
+                <div className="w3-container">
+                    <div>
                         <h4>Shipments</h4>
                         <table className="table table-hover">
-                            <thead >
+                            <thead  className="w3-teal">
                                 <tr>
                                     <th scope="col">Shipment Id</th>
                                     <th scope="col">Commodity</th>

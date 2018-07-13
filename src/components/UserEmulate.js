@@ -18,14 +18,14 @@ class UserEmulate extends React.Component {
         //     this.props.setUserLogInDetails();
         // }
         return (
-            <div className="w3-white w3-text-grey w3-card-4">
-                <div className="w3-display-container">
+            <div className="w3-white w3-text-grey w3-card-4"  style={{minHeight:800+'px'}}>
+                <div className="w3-display-container" style={{ textAlign:'center', marginBottom:20+'px'}}>
                     {/* <a href="javascript:void(0)" className="w3-button w3-hide-large w3-display-topleft" style={{ width: 100 + '%', fontSize: 22 + 'px' }}>Close Menu</a> */}
                     {/* <div className="w3-container" style={{ textAlign: 'left' }}> */}
-                    <img src={personImage} style={{ width: 100 + '%' }} alt="Avatar" />
+                    <img src={personImage} style={{ width: 50 + '%' }} alt="Avatar" />
                     {/* <i class="fa fa-user-circle fa-5x w3-margin-right w3-xxlarge w3-text-teal"></i> */}
-                    <div class="w3-display-bottomleft w3-container w3-text-black">
-                        <h2><b>{this.props.currentUser.split('#')[1]}</b></h2>
+                    <div className="w3-display-bottomleft w3-container w3-text-black">
+                        <h4><b>{this.props.currentUser.split('#')[1]}</b></h4>
                         {/* <hr /> */}
                     </div>
                 </div>

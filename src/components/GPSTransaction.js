@@ -24,7 +24,7 @@ class GPSTransaction extends React.Component {
     render() {
         return (
             <div>
-                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-map-marker fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>GPS Reading</h2>
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-map-marker fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>GPS Reading</h2>
                 
                 <div className="w3-container">
     

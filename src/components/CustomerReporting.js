@@ -20,7 +20,7 @@ class ReportingComponent extends React.Component {
     render() {
         return (
             <div>
-                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>View Reports</h2>
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>View Reports</h2>
 
                 <div className="w3-container jumbotron">
                     <h4>Select all shipments for a specific status</h4>

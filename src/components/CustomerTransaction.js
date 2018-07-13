@@ -21,7 +21,7 @@ class CustomerTransaction extends React.Component {
     render() {
         return (
             <div>
-                <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-check fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Transactions</h2>
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-check fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Transactions</h2>
 
                 <div className="w3-container jumbotron">
                     <div className="col-5">

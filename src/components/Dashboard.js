@@ -2,8 +2,6 @@ import React from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { userActions } from "../actions";
-import Welcome from './Welcome';
-import Navigation from './Navigation';
 
 class Dashboard extends React.Component {
 
@@ -19,7 +17,7 @@ class Dashboard extends React.Component {
     return (
       <div>
           {/* <h1>Hello! Welcome to coyote BlockChain Network</h1> */}
-          <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-th fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Hello! Welcome to coyote BlockChain Network</h2>
+          <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-th fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Hello! Welcome to coyote BlockChain Network</h2>
           
       </div>  
     )

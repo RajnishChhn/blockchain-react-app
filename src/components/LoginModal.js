@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import landingPageImage from '../components/carrier-landing-hero.jpg'
 
 const modalRoot = document.getElementById('modal-root');
 

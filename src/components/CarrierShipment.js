@@ -60,7 +60,7 @@ class CarrierShipment extends React.Component {
                                             <td>{shipment.unitCount}</td>
                                             <td>{shipment.contract.substring(shipment.contract.lastIndexOf("#") + 1)}</td>
                                             <td>{shipment.temperatureReadings.map((temperature) => temperature.centigrade + ", ")}</td>
-                                            <td>{shipment.gpsReadings.map((gps) => gps + ", ")}</td>
+                                            <td>{shipment.gpsReadings.map((gps) => "["+ gps.latitude + gps.latitudeDir + " " + gps.longitude + gps.longitudeDir +"], ")}</td>
                                         </tr>
                                     )}
                             </tbody>

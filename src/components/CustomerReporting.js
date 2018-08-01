@@ -20,6 +20,8 @@ class ReportingComponent extends React.Component {
     render() {
         return (
             <div>
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>View Reports</h2>
+                <div className="w3-container jumbotron">
                 <h4>Select all shipments for a specific status</h4>
                 <div className="input-group mt-4">
                     <select className="custom-select col-4" id="inputGroupSelect01" onChange={this.handleChange}>
@@ -29,12 +31,13 @@ class ReportingComponent extends React.Component {
                         <option value="ARRIVED">ARRIVED</option>
                     </select>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={this.handleSubmit}>Get</button>
+                            <button className="btn btn-outline-secondary w3-teal" type="button" onClick={this.handleSubmit}>Get</button>
+                        </div>
                     </div>
                 </div>
-
+                <div className="w3-container">
                 <table className="table table-hover mt-4">
-                    <thead >
+                        <thead className="w3-teal" >
                         <tr>
                             <th scope="col">Shipment Id</th>
                             <th scope="col">Commodity</th>
@@ -60,6 +63,7 @@ class ReportingComponent extends React.Component {
                             )}
                     </tbody>
                 </table>
+            </div>
             </div>
         )
     }

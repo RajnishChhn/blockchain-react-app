@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import landingPageImage from '../components/carrier-landing-hero.jpg'
 
 const modalRoot = document.getElementById('modal-root');
 
@@ -41,7 +40,7 @@ class LoginModal extends Component {
         cardDetails.append("name", this.state.cardName);
         this.props.importCard(cardDetails);
         if (this.props.currentUser) {
-            this.props.history.push("/dashboard");
+            this.props.changePath("/dashboard");
         }
     }
     loginContent() {

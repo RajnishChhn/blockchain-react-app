@@ -20,7 +20,7 @@ class CarrierReporting extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div  className="w3-container">
                 <h4>Select all transactions having temperature greater than:</h4>
                 <div className="input-group mb-3 mt-4">
                     <input type="text" className="form-control col-4" placeholder="Enter temperature..." onChange={this.handleChange} value={this.state.inputTemperature} />
@@ -30,7 +30,7 @@ class CarrierReporting extends React.Component {
                 </div>
 
                 <table className="table table-hover" style={{ visibility: 'hidden' }}>
-                    <thead >
+                    <thead className="w3-teal">
                         <tr>
                             <th scope="col">Shipment Id</th>
                             <th scope="col">Commodity</th>

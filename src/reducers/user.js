@@ -1,7 +1,6 @@
 const initialState = {
   user: "",
-  userLoggedIn: false,
-  // cardUploaded:false
+  path:'/'
 }
 export default function (state = initialState, action) {
 
@@ -16,10 +15,10 @@ export default function (state = initialState, action) {
         shipments: action.payload
       });
 
-    case "USER_LOGGEDIN":
-      return Object.assign({}, state, {
-        userLoggedIn: action.payload
-      });
+    // case "USER_LOGGEDIN":
+    //   return Object.assign({}, state, {
+    //     userLoggedIn: action.payload
+    //   });
     case "TEMPERATURE_QUERY_FETCHED":
       return Object.assign({}, state, {
         temperatureQueryResult: action.payload
@@ -29,10 +28,10 @@ export default function (state = initialState, action) {
       return Object.assign({}, state, {
         shipmentStatusQueryResult: action.payload
       });
-    // case "CARD_UPLOADED":
-    // return Object.assign({}, state, {
-    //   cardUploaded: action.payload
-    // });
+    case "CHANGE_PATH":
+    return Object.assign({}, state, {
+      path: action.payload
+    });
 
     default:
       break;

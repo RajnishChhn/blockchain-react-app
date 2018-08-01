@@ -197,3 +197,10 @@ export const getCustShipmentStatusQueryResult =(inputStatus) =>{
         );
     }
 }
+
+export const changePath =(path)=>{
+    return{
+        type:"CHANGE_PATH",
+        payload:path
+    }
+}

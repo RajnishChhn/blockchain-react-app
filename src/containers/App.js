@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Router, Route, Redirect } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import Dashboard from '../components/Dashboard';
@@ -12,8 +12,6 @@ import TemperatureTransaction from '../components/TemperatureTransaction';
 import GPSTransaction from '../components/GPSTransaction';
 import CustomerShipment from '../components/CustomerShipment';
 import CarrierShipment from '../components/CarrierShipment';
-import Login from '../components/Login';
-import CardAuthentication from '../components/CardAuthentication';
 import UserEmulate from "../components/UserEmulate";
 import LoginModal from "../components/LoginModal";
 import { userActions } from "../actions";
@@ -34,13 +32,15 @@ class App extends Component {
     websocket.onopen = function (evt) { console.log("open : " + JSON.stringify(evt)); };
     websocket.onmessage = (evt) => this.ShowNotification(evt.data);
     websocket.onerror = function (evt) { console.log("error : " + JSON.stringify(evt)); };
-    console.log("now state : " + websocket.readyState)
+    console.log("now state : " + websocket.readyState)  
+    if(window.location.search === "?loggedIn=true") {
+      sessionStorage.userLoggedIn = true;
+    }  
   }
 
   ShowNotification(event) {
     var namespace = "org.acme.shipping.perishable.";
     var eventData = JSON.parse(event);
-    var message = "";
 
     switch (eventData["$class"]) {
       case namespace + "TemperatureThresholdEvent":
@@ -59,58 +59,86 @@ class App extends Component {
       case namespace + "ShipmentInPortEvent":
         toastr.success(`Shipment : ${eventData.shipment.split('#')[1]}`, `Shipment Location updated`);
         break;
+      default:
+        break
     }
-
   }
-
 
   componentDidMount() {
     this.props.getCardDetailsPing();
     this.props.getAllShipments();
+    
   }
-  render() {
+
+   render() {
     // const isCustomer = this.props.user.user.includes('Customer');  
-    let userLoggedIn = this.props.user.userLoggedIn;
+    let userLoggedIn = sessionStorage.userLoggedIn;
     let cardUploaded = this.props.user.user;
+    let path = this.props.user.path;
     return (
       <div>
         <ReduxToastr
-          timeOut={5000}
+          timeOut={10000}
           newestOnTop={false}
           preventDuplicates
           position="top-right"
           transitionIn="fadeIn"
           transitionOut="fadeOut"
           progressBar />
-        <Router history={history}>
-          <div>
-            {/* {userLoggedIn && !cardUploaded &&
-            <LoginModal {...this.props} showCard={true} history={history}/>  
-          } */}
-            {this.props.user.userLoggedIn && cardUploaded &&
-              <UserEmulate setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} />
-            }
-            <Route exact path="/card-auth" component={() => cardUploaded ? <UserEmulate setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} setUserLogInDetails={this.props.setUserLogInDetails} userLoggedIn={this.props.user.userLoggedIn} />
-              : <LoginModal {...this.props} showCard={true} history={history} />} />
+          <div className="w3-row-padding">
+            {/* Bg Image */}
             {(!userLoggedIn || !cardUploaded) &&
-              <img src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
+              <img alt="Not found" src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
             }
-            <div className="w3-container" id="contact" style={{ marginTop: 75 + 'px', marginLeft: 380 + 'px' }}>
-              {/*<Route exact path="/card-auth" component={() => <CardAuthentication {...this.props} history={history}/>} />*/}
-              {/* <Redirect from="/" to={isCustomer ? 'create-shipment':'accept-shipment' } /> */}
-              <img src={coyoteLogo} style={{ height: 'auto', width: 160 + 'px', float: 'right', marginTop: -78 + 'px' }} />
-              <Route exact path="/" component={() => <LoginModal history={history} />} />
-              <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/create-shipment' component={() => <CustomerShipment {...this.props} />} />
-              <Route exact path='/accept-shipment' component={() => <CarrierShipment {...this.props} />} />
-              <Route exact path='/customer-transaction' component={() => <CustomerTransaction {...this.props} />} />
-              <Route exact path='/temperature-transaction' component={() => <TemperatureTransaction {...this.props} />} />
-              <Route exact path='/gps-transaction' component={() => <GPSTransaction {...this.props} />} />
-              <Route exact path='/customer-reporting' component={() => <CustomerReporting {...this.props} />} />
-              <Route exact path='/carrier-reporting' component={() => <CarrierReporting {...this.props} />} />
+            {/* Left Navigation */}
+            <div className="w3-third">
+              {userLoggedIn && cardUploaded &&
+                <UserEmulate changePath={this.props.changePath} setUserDetails={this.props.setUserDetails} history={history} currentUser={this.props.user.user} />
+              }
+              {(!cardUploaded && userLoggedIn) &&
+                <LoginModal {...this.props} showCard={true} history={history} />
+              }              
+            </div>
+
+            {/* Coyote Logo and Right Side Panel*/}
+            <div className={userLoggedIn && cardUploaded ? "w3-twothird w3-card w3-white right-div" : ''} id="contact">
+              <div className="w3-container w3-margin-bottom">
+                {userLoggedIn && cardUploaded &&
+                  <div className="w3-container w3-margin">
+                    <img src={coyoteLogo} style={{ height: 'auto', width: 160 + 'px', float: 'right' }} />
+                  </div>
+                }
+
+                {(!userLoggedIn && !cardUploaded) && 
+                  <LoginModal history={history} showCard={false} {...this.props}/>                  
+                }                
+                {path === "/dashboard" && 
+                  <Dashboard />
+                }
+                {path === "/create-shipment" && 
+                  <CustomerShipment {...this.props} />
+                }
+                {path === "/accept-shipment" && 
+                  <CarrierShipment {...this.props} />
+                }
+                {path === "/customer-transaction" && 
+                  <CustomerTransaction {...this.props} />
+                }
+                {path === "/temperature-transaction" && 
+                 <TemperatureTransaction {...this.props} />
+                }
+                {path === "/gps-transaction" && 
+                  <GPSTransaction {...this.props} />
+                }
+                {path === "/customer-reporting" && 
+                  <CustomerReporting {...this.props} />
+                }
+                {path === "/carrier-reporting" && 
+                  <CarrierReporting {...this.props} />
+                }
+              </div>
             </div>
           </div>
-        </Router>
       </div>
     )
   }

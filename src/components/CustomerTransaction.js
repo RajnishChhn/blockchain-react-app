@@ -20,7 +20,9 @@ class CustomerTransaction extends React.Component {
     }
     render() {
         return (
-            <div className="row">
+            <div>
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-check fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Transactions</h2>
+                <div className="w3-container jumbotron">
                 <div className="col-5">
                     <h4>Confirm arrival of a Shipment</h4>
                     <form>
@@ -35,8 +37,9 @@ class CustomerTransaction extends React.Component {
 
                             {/* <input type="text" className="form-control" id="shipmentId" onChange={(event) => this.handlechange(event)} /> */}
                         </div>
-                        <button className="btn btn-primary" onClick={(event) => this.handleSubmit(event)}>Shipment Arrived</button>
+                            <button className="btn w3-teal" onClick={(event) => this.handleSubmit(event)}>Shipment Arrived</button>
                     </form>
+                    </div>
                 </div>
             </div>
         )

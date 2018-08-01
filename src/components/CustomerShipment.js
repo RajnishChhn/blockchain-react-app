@@ -33,8 +33,9 @@ class CustomerShipment extends React.Component {
         // }
         return (
             <div>
-                <div className="row">
-                    <div className="col-6 jumbotron">
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-truck fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Shipment Management</h2>
+                {/* <div className="row"> */}
+                <div className="w3-container jumbotron">
                         <h4>Create Shipment</h4>
                         <form>
                             <div className="form-group">
@@ -83,17 +84,17 @@ class CustomerShipment extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
+                        <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
                         </form>
-                    </div>
+                    <hr />
                 </div>
-                <hr />
+                {/* </div> */}
 
-                <div className="row">
-                    <div className="col">
+                <div className="w3-container">
+                    <div>
                         <h4>Shipments</h4>
                         <table className="table table-hover">
-                            <thead >
+                            <thead className="w3-teal">
                                 <tr>
                                     <th scope="col">Shipment Id</th>
                                     <th scope="col">Commodity</th>
@@ -114,7 +115,7 @@ class CustomerShipment extends React.Component {
                                             <td>{shipment.unitCount}</td>
                                             <td>{shipment.contract.substring(shipment.contract.lastIndexOf("#") + 1)}</td>
                                             <td>{shipment.temperatureReadings.map((temperature) => temperature.centigrade + ", ")}</td>
-                                            <td>{shipment.gpsReadings.map((gps) => gps + ", ")}</td>
+                                            <td>{shipment.gpsReadings.map((gps) => "["+ gps.latitude + gps.latitudeDir + " " + gps.longitude + gps.longitudeDir +"], ")}</td>
                                         </tr>
                                     )}
                             </tbody>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import constants from "../common";
+import { toastr } from 'react-redux-toastr'
 
 axios.defaults.withCredentials = true;
 
@@ -16,7 +17,6 @@ export const getAllShipments = () => {
             method: 'get',
             url: `${constants.API_BASE_URL}${constants.GET_CREATE_SHIPMENTS}`
         }).then(response => {
-            // localStorage.setItem("UserDetails", JSON.stringify(response.data));
             dispatch(receivedAllShipments(response.data));
         }).catch(err =>
             console.log(err)
@@ -32,27 +32,33 @@ const receivedAllShipments = shipments => {
 }
 
 export const createShipment = shipment => {
-    return dispatch => {
+    return (dispatch) => {
         axios.request({
             method: 'post',
             url: `${constants.API_BASE_URL}${constants.GET_CREATE_SHIPMENTS}`,
             data: shipment
+        }).then(() => {
+            toastr.success('Success', 'Shipment created successfully')
+            dispatch(getAllShipments());
         }).catch(err =>
-            console.log(err)
+            toastr.error('Error', err.message)
         );
     }
 }
 
-export const acceptShipment = shipmentId => {
-    return dispatch => {
+export const acceptShipment = shipment => {
+    return (dispatch) => {
         axios.request({
             method: 'post',
             url: `${constants.API_BASE_URL}${constants.ACCEPT_SHIPMENT}`,
-            data: {
-                shipment: shipmentId
-            }
+            data: 
+            shipment
+            
+        }).then(() => {
+            toastr.success('Success', 'Shipment accepted successfully');
+            dispatch(getAllShipments());            
         }).catch(err =>
-            console.log(err)
+            toastr.error('Error', err.message)
         );
     }
 }
@@ -98,8 +104,7 @@ export const setDefaultCard = (cardDetails) => {
         axios.request({
             method: 'post',
             url: `${constants.API_BASE_URL}wallet/${cardDetails.get('name')}/setDefault`,
-        }).then(response => {
-            // dispatch(cardUploaded(cardDetails));
+        }).then(() => {
             dispatch(getCardDetailsPing());
         }).catch(err =>
             console.log(err.message)
@@ -108,55 +113,58 @@ export const setDefaultCard = (cardDetails) => {
 }
 
 export const receiveShipment = (shipmentId) => {
-    return dispatch => {
+    return (dispatch) => {
         axios.request({
             method: 'post',
             url: `${constants.API_BASE_URL}${constants.RECEIVE_SHIPMENT}`,
             data: {
                 shipment: shipmentId
             }
-        }).then(response => {
-            console.log(response)
+        }).then(() => {
+            toastr.success('Success', 'Shipment received successfully');
+            dispatch(getAllShipments());            
         }).catch(err =>
-            console.log(err.message)
+            toastr.error('Error', err.message)
         );
     }
 }
 
 export const submitTemperature = (formData) => {
-    return dispatch => {
+    return (dispatch) => {
         axios.request({
             method: 'post',
             url: `${constants.API_BASE_URL}${constants.SUBMIT_TEMPERATURE}`,
             data: formData
-        }).then(response => {
-            console.log(response)
+        }).then(() => {
+            toastr.success('Success', 'Temperature submitted successfully');
+            dispatch(getAllShipments());            
         }).catch(err =>
-            console.log(err.message)
+            toastr.error('Error', err.message)
         );
     }
 }
 
 export const submitGPS = (formData) => {
-    return dispatch => {
+    return (dispatch) => {
         axios.request({
             method: 'post',
             url: `${constants.API_BASE_URL}${constants.SUBMIT_GPS}`,
             data: formData
-        }).then(response => {
-            console.log(response)
+        }).then(() => {
+            toastr.success('Success', 'GPS Location submitted successfully');
+            dispatch(getAllShipments());            
         }).catch(err =>
-            console.log(err.message)
+            toastr.error('Error', err.message)
         );
     }
 }
 
-export const setUserLogInDetails = () => {
-    return {
-        type: "USER_LOGGEDIN",
-        payload: true
-    }
-}
+// export const setUserLogInDetails = () => {
+//     return {
+//         type: "USER_LOGGEDIN",
+//         payload: true
+//     }
+// }
 
 const setTemperatureQueryResult = (result) => {
     return {

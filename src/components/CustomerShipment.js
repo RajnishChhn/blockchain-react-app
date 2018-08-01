@@ -26,69 +26,64 @@ class CustomerShipment extends React.Component {
         this.props.createShipment(formData);
     }
     render() {
-        // if(!this.props.user || !this.props.user.shipments) {
-        //     return(
-        //         <div/>
-        //     )
-        // }
+
         return (
             <div>
                 <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-truck fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Shipment Management</h2>
-                {/* <div className="row"> */}
                 <div className="w3-container jumbotron">
-                        <h4>Create Shipment</h4>
-                        <form>
+                    <h4>Create Shipment</h4>
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="shipmentId">Shipment</label>
+                            <input type="text" className="form-control" id="shipmentId" onChange={event => this.handleChange(event)} />
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="unitCount">Units</label>
+                                    <input type="text" className="form-control" id="unitCount" onChange={event => this.handleChange(event)} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
                             <div className="form-group">
-                                <label htmlFor="shipmentId">Shipment</label>
-                                <input type="text" className="form-control" id="shipmentId" onChange={event => this.handleChange(event)} />
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="unitCount">Units</label>
-                                        <input type="text" className="form-control" id="unitCount" onChange={event => this.handleChange(event)} />
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="type">Commodity</label>
-                                        <select className="form-control" id="type" onChange={this.handleChange}>
-                                            <option defaultValue>Select Commodity...</option>
-                                            <option value="APPLES">APPLES</option>
-                                            <option value="BANANAS">BANANAS</option>
-                                            <option value="PEACHES">PEACHES</option>
-                                        </select>
+                                <label htmlFor="type">Commodity</label>
+                                <select className="form-control" id="type" onChange={this.handleChange}>
+                                    <option defaultValue>Select Commodity...</option>
+                                    <option value="APPLES">APPLES</option>
+                                    <option value="BANANAS">BANANAS</option>
+                                    <option value="PEACHES">PEACHES</option>
+                                </select>
 
-                                        {/* <input type="text" className="form-control" id="type" onChange={event => this.handleChange(event)} /> */}
-                                    </div>
-                                </div>
+                                {/* <input type="text" className="form-control" id="type" onChange={event => this.handleChange(event)} /> */}
                             </div>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="status" >Status</label>
-                                        <select className="form-control" id="status" onChange={this.handleChange}>
-                                            <option defaultValue>Select status...</option>
-                                            <option value="CREATED">CREATED</option>
-                                            <option value="IN_TRANSIT">IN TRANSIT</option>
-                                            <option value="ARRIVED">ARRIVED</option>
-                                        </select>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="status" >Status</label>
+                                    <select className="form-control" id="status" onChange={this.handleChange}>
+                                        <option defaultValue>Select status...</option>
+                                        <option value="CREATED">CREATED</option>
+                                        <option value="IN_TRANSIT">IN TRANSIT</option>
+                                        <option value="ARRIVED">ARRIVED</option>
+                                    </select>
 
-                                        {/* <input type="text" className="form-control" id="status" onChange={event => this.handleChange(event)} /> */}
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="contract" >Contract</label>
-                                        <input type="text" className="form-control" id="contract" onChange={event => this.handleChange(event)} />
-                                    </div>
+                                    {/* <input type="text" className="form-control" id="status" onChange={event => this.handleChange(event)} /> */}
                                 </div>
                             </div>
-                        <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
-                        </form>
-                    <hr />
+                            <div className="col">
+                                <div className="form-group">
+                                    <label htmlFor="contract" >Contract</label>
+                                    <input type="text" className="form-control" id="contract" onChange={event => this.handleChange(event)} />
+                                </div>
+                            </div>
+                            <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
+
+                            <hr />
+                        </div>
+                    </form>
                 </div>
-                {/* </div> */}
 
                 <div className="w3-container">
                     <div>
@@ -115,7 +110,7 @@ class CustomerShipment extends React.Component {
                                             <td>{shipment.unitCount}</td>
                                             <td>{shipment.contract.substring(shipment.contract.lastIndexOf("#") + 1)}</td>
                                             <td>{shipment.temperatureReadings.map((temperature) => temperature.centigrade + ", ")}</td>
-                                            <td>{shipment.gpsReadings.map((gps) => "["+ gps.latitude + gps.latitudeDir + " " + gps.longitude + gps.longitudeDir +"], ")}</td>
+                                            <td>{shipment.gpsReadings.map((gps) => "[" + gps.latitude + gps.latitudeDir + " " + gps.longitude + gps.longitudeDir + "], ")}</td>
                                         </tr>
                                     )}
                             </tbody>

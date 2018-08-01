@@ -77,6 +77,9 @@ class App extends Component {
     let path = this.props.user.path;
     return (
       <div>
+        {/* {(!userLoggedIn || !cardUploaded) &&
+          <img src={landingPageImage} style={{ height: 'auto', width: 100 + '%' }} />
+        } */}
         <ReduxToastr
           timeOut={10000}
           newestOnTop={false}

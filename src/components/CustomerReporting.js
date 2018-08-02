@@ -20,13 +20,14 @@ class ReportingComponent extends React.Component {
     render() {
         return (
             <div>
-                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-book fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>View Reports</h2>
-                <div className="w3-container jumbotron">
+                <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-list-alt fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>View Reports</h2>
+                <div className="w3-panel w3-leftbar w3-sand w3-padding-16">
                 <h4>Select all shipments for a specific status</h4>
                 <div className="input-group mt-4">
                     <select className="custom-select col-4" id="inputGroupSelect01" onChange={this.handleChange}>
                         <option defaultValue>Select status...</option>
                         <option value="CREATED">CREATED</option>
+                        <option value="ACCEPTED">ACCEPTED</option>
                         <option value="IN_TRANSIT">IN TRANSIT</option>
                         <option value="ARRIVED">ARRIVED</option>
                     </select>

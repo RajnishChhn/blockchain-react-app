@@ -12,10 +12,11 @@ export const setUserDetails = details => {
 }
 
 export const getAllShipments = () => {
+    let apirequest = constants.API_BASE_URL + constants.GET_CREATE_SHIPMENTS;
     return dispatch => {
         axios.request({
             method: 'get',
-            url: `${constants.API_BASE_URL}${constants.GET_CREATE_SHIPMENTS}`
+            url: apirequest
         }).then(response => {
             dispatch(receivedAllShipments(response.data));
         }).catch(err =>

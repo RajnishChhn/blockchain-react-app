@@ -19,7 +19,7 @@ class TemperatureTransaction extends React.Component {
         return (
             <div>
                 <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-thermometer-full fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Temperature Reading</h2>                
-                <div className="w3-container">
+                <div className="w3-panel w3-leftbar w3-sand w3-padding-16">
                     <div className="col-6">
                         <h4>Temperature Readings</h4>
                         <form>

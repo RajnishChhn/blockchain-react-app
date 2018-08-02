@@ -2,7 +2,7 @@ import React from 'react';
 
 class Login extends React.Component {
     handleSubmmit() {
-       window.location.href = "https://composer-rest-server-coyote-acl-network.mybluemix.net/auth/github";
+       window.location.href = "http://localhost:4000/auth/github";
     }
     render() {
         return (

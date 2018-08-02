@@ -30,14 +30,16 @@ class CustomerShipment extends React.Component {
         return (
             <div>
                 <h2 className="w3-text-grey w3-padding-16"><i className="fa fa-truck fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Shipment Management</h2>
-                <div className="w3-container jumbotron">
+                <div className="w3-panel w3-leftbar w3-sand w3-padding-16">
                     <h4>Create Shipment</h4>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="shipmentId">Shipment</label>
-                            <input type="text" className="form-control" id="shipmentId" onChange={event => this.handleChange(event)} />
+                            <div className="col">
+                                <label htmlFor="shipmentId">Shipment</label>
+                                <input type="text" className="form-control" id="shipmentId" onChange={event => this.handleChange(event)} />
+                            </div>
                         </div>
-                        <div className="row">
+                        <div className="form-group">
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="unitCount">Units</label>
@@ -45,8 +47,8 @@ class CustomerShipment extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="form-group">
+                        <div className="form-group">
+                            <div className="col">
                                 <label htmlFor="type">Commodity</label>
                                 <select className="form-control" id="type" onChange={this.handleChange}>
                                     <option defaultValue>Select Commodity...</option>
@@ -58,15 +60,13 @@ class CustomerShipment extends React.Component {
                                 {/* <input type="text" className="form-control" id="type" onChange={event => this.handleChange(event)} /> */}
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="form-group">
                             <div className="col">
                                 <div className="form-group">
                                     <label htmlFor="status" >Status</label>
                                     <select className="form-control" id="status" onChange={this.handleChange}>
-                                        <option defaultValue>Select status...</option>
-                                        <option value="CREATED">CREATED</option>
-                                        <option value="IN_TRANSIT">IN TRANSIT</option>
-                                        <option value="ARRIVED">ARRIVED</option>
+                                        <option defaultValue>---Select status---</option>
+                                        <option value="CREATED">CREATED</option>                                        
                                     </select>
 
                                     {/* <input type="text" className="form-control" id="status" onChange={event => this.handleChange(event)} /> */}
@@ -78,10 +78,14 @@ class CustomerShipment extends React.Component {
                                     <input type="text" className="form-control" id="contract" onChange={event => this.handleChange(event)} />
                                 </div>
                             </div>
-                            <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
 
-                            <hr />
                         </div>
+                        <div className="form-group">
+                            <div className="col">
+                                <button type="submit" className="btn w3-teal" onClick={event => this.handleSubmit(event)}>Create Shipment</button>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
 

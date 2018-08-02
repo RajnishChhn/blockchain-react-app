@@ -60,7 +60,7 @@ class LoginModal extends Component {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-lg btn-success">
-                                    <a href='https://composer-rest-server-coyote-acl-network.mybluemix.net/auth/github' style={{ color: 'white' }}>Login</a>
+                                    <a href='http://localhost:4000/auth/github' style={{ color: 'white' }}>Login</a>
                                 </button>
                             </div>
                         </div>

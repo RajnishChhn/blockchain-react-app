@@ -20,7 +20,7 @@ class CarrierReporting extends React.Component {
     }
     render() {
         return (
-            <div  className="w3-container">
+            <div className="w3-panel w3-leftbar w3-sand w3-padding-16">
                 <h4>Select all transactions having temperature greater than:</h4>
                 <div className="input-group mb-3 mt-4">
                     <input type="text" className="form-control col-4" placeholder="Enter temperature..." onChange={this.handleChange} value={this.state.inputTemperature} />

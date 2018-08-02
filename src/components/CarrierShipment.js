@@ -22,7 +22,7 @@ class CarrierShipment extends React.Component {
         }
         return (
             <div>
-                <div className="w3-container jumbotron">
+                <div className="w3-panel w3-leftbar w3-sand w3-padding-16">
                     <div className="col-5">
                         <h4>Accept Shipment</h4>
                         <form>
